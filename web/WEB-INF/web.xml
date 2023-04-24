@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="4.0" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
+    <servlet>
+        <servlet-name>SvInicio</servlet-name>
+        <servlet-class>Controlador.SvInicio</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SvRegistro</servlet-name>
+        <servlet-class>Controlador.SvRegistro</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SvComentario</servlet-name>
+        <servlet-class>Controlador.SvComentario</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SvInicio</servlet-name>
+        <url-pattern>/SvInicio</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SvRegistro</servlet-name>
+        <url-pattern>/SvRegistro</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SvComentario</servlet-name>
+        <url-pattern>/SvComentario</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
