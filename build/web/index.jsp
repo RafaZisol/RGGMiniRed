@@ -10,15 +10,16 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>SiscoRed</title>
+        <link rel="stylesheet" href="./Estilo1.css">
     </head>
     <body>
         <h1>Bienvenido a la SiscoRed.</h1>
         <form action="./Iniciar.jsp">
-            <input type="submit" value="Iniciar Sesion">
+            <input type="submit" value="Iniciar Sesion" id="boton1">
         </form>
         <br>
         <form action="./Registrar.jsp">
-            <input type="submit" value="Registrarse">
+            <input type="submit" value="Registrarse" id="boton2">
         </form>        
     </body>
 </html>

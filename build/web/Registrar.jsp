@@ -10,6 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Registrarse</title>
+        <link rel="stylesheet" href="./Estilo1.css">
     </head>
     <body>
         <label><h1>Registrar</h1></label>

@@ -13,6 +13,7 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 
 /**
  *
@@ -73,24 +74,13 @@ public class SvComentario extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         PrintWriter out = response.getWriter();
-        String nombre=request.getParameter("nombre");
-        UsuarioDAO daou=new UsuarioDAO();
+        String buscado = request.getParameter("buscado");
+        UsuarioDAO daou=new UsuarioDAO(); 
+        HttpSession sesion = request.getSession(); 
+        sesion.setAttribute("buscado",buscado);
+        RequestDispatcher vista=request.getRequestDispatcher("Perfile.jsp");
+        vista.forward(request, response);
         
-        if(daou.buscar(nombre)==true){
-            request.setAttribute("nombre",nombre);
-            RequestDispatcher vista=request.getRequestDispatcher("Perfile.jsp");
-            vista.forward(request, response);
-        }else if(daou.buscar(nombre)==false){
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Srvldatos</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Usuario no encontrado</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
     }
 
     /**

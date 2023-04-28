@@ -4,7 +4,9 @@
  */
 package Controlador;
 
-import DAO.UsuarioDAO;
+import DAO.ComentarioDAO;
+import Modelo.Comentario;
+import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,6 +15,8 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.sql.SQLException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,7 +24,7 @@ import java.util.logging.Logger;
  *
  * @author USER
  */
-public class SvInicio extends HttpServlet {
+public class SvComentar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +43,10 @@ public class SvInicio extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SvInicio</title>");            
+            out.println("<title>Servlet SvComentar</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SvInicio at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet SvComentar at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -74,28 +78,22 @@ public class SvInicio extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
-        UsuarioDAO dao=new UsuarioDAO();
-        String usuario=request.getParameter("usuario");
-        String contra=request.getParameter("contra"); 
-        System.out.println(usuario);
+        String comentario=request.getParameter("comentario");
+        HttpSession sesion=request.getSession();
+        String autor = (String) sesion.getAttribute("usuario");
+        LocalDate fechaActual = LocalDate.now();
+        String fecha = fechaActual.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"));
+        String comentado = (String) sesion.getAttribute("buscado");
         
-        if(dao.login(usuario, contra)==true){
-            HttpSession sesion=request.getSession();
-            sesion.setAttribute("usuario",usuario);
-            response.sendRedirect("Indice.jsp");
-        }else if(dao.login(usuario, contra)==false){
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Srvldatos</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Usuario no encontrado</h1>");
-            out.println("</body>");
-            out.println("</html>");
+        Comentario com= new Comentario(comentario,fecha,autor,comentado);
+        ComentarioDAO dao=new ComentarioDAO();
+        try {       
+            dao.comentar(com);
+        } catch (SQLException ex) {
+            Logger.getLogger(SvRegistro.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+        RequestDispatcher vista=request.getRequestDispatcher("Perfile.jsp");
+        vista.forward(request, response);
     }
 
     /**

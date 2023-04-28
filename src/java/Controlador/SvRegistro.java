@@ -78,8 +78,7 @@ public class SvRegistro extends HttpServlet {
         String Nombre = request.getParameter("nombre");
         String Apellido = request.getParameter("apellidos");
         String Correo = request.getParameter("correo");
-        String pass = request.getParameter("contra");
-        
+        String pass = request.getParameter("contra");        
         UsuarioDAO dao = new UsuarioDAO();
         Usuario usu = new Usuario();
         usu.setNombre(Nombre);

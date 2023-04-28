@@ -4,7 +4,7 @@
  */
 package Controlador;
 
-import DAO.UsuarioDAO;
+import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,15 +12,12 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.sql.SQLException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author USER
  */
-public class SvInicio extends HttpServlet {
+public class SvCerrar extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -39,10 +36,10 @@ public class SvInicio extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet SvInicio</title>");            
+            out.println("<title>Servlet SvCerrar</title>");            
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet SvInicio at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet SvCerrar at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -74,28 +71,10 @@ public class SvInicio extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
-        UsuarioDAO dao=new UsuarioDAO();
-        String usuario=request.getParameter("usuario");
-        String contra=request.getParameter("contra"); 
-        System.out.println(usuario);
-        
-        if(dao.login(usuario, contra)==true){
-            HttpSession sesion=request.getSession();
-            sesion.setAttribute("usuario",usuario);
-            response.sendRedirect("Indice.jsp");
-        }else if(dao.login(usuario, contra)==false){
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet Srvldatos</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Usuario no encontrado</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-        
+        HttpSession session = request.getSession();
+        session.invalidate();
+        RequestDispatcher vista=request.getRequestDispatcher("index.jsp");
+        vista.forward(request, response);
     }
 
     /**

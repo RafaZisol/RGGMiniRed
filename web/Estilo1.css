@@ -1,0 +1,67 @@
+/* Establecemos algunas reglas generales para la página */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f2f2f2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+  }
+  
+  h1 {
+    color: #444;
+  }
+  
+  /* Reglas para el formulario de registro */
+  form {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  }
+  
+  form label {
+    font-weight: bold;
+    font-size: 16px;
+    color: #444;
+  }
+  
+  form input[type="text"],
+  form input[type="email"],
+  form input[type="password"] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  form input[type="submit"] {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 4px;
+  }
+  
+  form input[type="submit"]:hover {
+    background-color: #3e8e41;
+  }
+  
+  form div {
+    display: flex;
+    justify-content: center;
+  }  
+
+  p a {
+    color: #2196F3;
+  }
+  

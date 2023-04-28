@@ -10,9 +10,11 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Iniciar Sesión</title>
+        <link rel="stylesheet" href="./Estilo1.css">
+        <script src="./Validación.js"></script>
     </head>
     <body>
-        <form action="SvInicio" method="post">
+        <form action="SvInicio" method="post" onsubmit="return validarFormulario();">
         <label class="titu">Iniciar sesión</label>
         <br><br>
         <label for="usuario" Class="Usu">Nombre:</label>
@@ -23,7 +25,7 @@
         <br>
         <input type="password" value="" id="inputcontra" name="contra">
         <br><br>        
-        <input type="submit" id="boton2" value="Iniciar Sesión">
+        <input type="submit" id="boton2" value="Iniciar Sesión" >
         <br>
         <a href="./Registrar.jsp">¿No tienes cuenta? Regístrate</a></p>
         </form>

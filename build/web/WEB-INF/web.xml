@@ -12,6 +12,18 @@
         <servlet-name>SvComentario</servlet-name>
         <servlet-class>Controlador.SvComentario</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SvComentar</servlet-name>
+        <servlet-class>Controlador.SvComentar</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SvComentario2</servlet-name>
+        <servlet-class>Controlador.SvComentario2</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>SvCerrar</servlet-name>
+        <servlet-class>Controlador.SvCerrar</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>SvInicio</servlet-name>
         <url-pattern>/SvInicio</url-pattern>
@@ -23,6 +35,18 @@
     <servlet-mapping>
         <servlet-name>SvComentario</servlet-name>
         <url-pattern>/SvComentario</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SvComentar</servlet-name>
+        <url-pattern>/SvComentar</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SvComentario2</servlet-name>
+        <url-pattern>/SvComentario2</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SvCerrar</servlet-name>
+        <url-pattern>/SvCerrar</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

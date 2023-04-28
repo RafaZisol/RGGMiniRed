@@ -52,6 +52,7 @@ public class ComentarioDAO {
                 com.setComentado(rs.getString("comentado"));
                 com.setComentario(rs.getString("comentario"));
                 com.setFecha(rs.getString("fecha"));
+                list.add(com);
             }
         }catch(Exception e){}
     return list;

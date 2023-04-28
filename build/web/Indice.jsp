@@ -13,6 +13,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Página principal</title>
+        <link rel="stylesheet" href="./Estilo2.css">
     </head>
     <body>
         <h1>Perfiles</h1>
@@ -20,6 +21,7 @@
             <thead>
                 <th>Nombre</th>
                 <th>Apellidos</th>
+                <th></th>
                 <th></th>
             </thead>
             <%
@@ -29,17 +31,31 @@
                 Usuario usu;
                 while(iter.hasNext()){ 
                     usu=iter.next();
+                    String nombre = usu.getNombre();
+                    String apellido = usu.getApellido();
             %>
             <tbody>
                 <tr>
-                    <td><%=usu.getNombre()%></td>
-                    <td><%=usu.getApellido()%></td>
+                    <td><%=nombre%></td>
+                    <td><%=apellido%></td>
                     <td>
-                        <a href="SvComentario?nombre=<%=usu.getNombre()%>">Comentar</a>
+                        <form action="SvComentario" method="post">                            
+                            <input type="text" value="<%=nombre%>" readonly hidden name="buscado">
+                            <input type="submit" value="Comentar">
+                        </form>
+                    </td>
+                    <td>
+                        <form action="SvComentario2" method="post">                            
+                            <input type="text" value="<%=nombre%>" readonly hidden name="buscado">
+                            <input type="submit" value="Ver Comentarios">
+                        </form>
                     </td>
                 </tr>
                 <%}%>
             </tbody>
         </table>
+            <form action="SvCerrar" method="post">
+                <input type="submit" value="Cerrar Sesion">
+            </form>
     </body>
 </html>
